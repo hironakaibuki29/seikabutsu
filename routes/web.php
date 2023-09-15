@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ShopController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,15 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/posts',[PostController::class,'index']);
+
+Route::get('/shops',[ShopController::class,'index']);
+Route::get('/',[ShopController::class,'index']);
+Route::get('/shops/create', [ShopController::class, 'create']);
+Route::get('/shops/{shop}',[ShopController::class,'show']);
+Route::post('/shops', [ShopController::class, 'store']);
+Route::get('/shops/{shop}/edit',[ShopController::class,'edit']);
+Route::put('/shops/{shop}',[ShopController::class,'update']);
+Route::delete('/shops/{shop}', [ShopController::class,'delete']);
 
 
 Route::get('/dashboard', function () {
