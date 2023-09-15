@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->double('latitude');
             $table->double('longitude');
             $table->text('information');
             $table->timestamps();
+            $table->softDeletes();
+            $table->text('shopname');
         });
     }
 
