@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>meshitero</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <body>
+<x-app-layout>
+    <x-slot name="header">
+        index
+    </x-slot>
+        <div>
+            <form action="{{ route('index') }}" method="GET">
+                <input type="text" name="keyword" value="{{ keyword }}">
+                <input type="submit" value="検索">
+            </form>
+        </div>
         <h1>店舗一覧</h1>
         <a href='/shops/create'>create</a>
         <div class='shops'>
@@ -35,4 +36,4 @@
                 }
             }
          </script>
-    </body>
+    </x-app-layout>

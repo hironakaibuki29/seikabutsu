@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
-     public function index(Shop $shop)
+     public function index(ShopRequest $request, Shop $shop)
     {
+      
         return view('shops.index')->with(['shops' => $shop->getByLimit()]);
+        
+        $keyword = $request->input('keyword');
+        
+        $query = Shop::query();
+        
+        if(!empty($keyword)){
+            $query->where('shopname','LIKE',"%{keyword}%")->orwhere('information','LIKE',"%{keyword}");
+        }
+        
+        $Shops = $query->get();
+        
+        return view('index',compact('shops','keyword'));
     }
     
     public function show(Shop $shop)
