@@ -14,6 +14,6 @@
             <a href="/shops/{{ $shop->id }}/edit">edit</a>
         </div>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="{{ route('index')}}">戻る</a>
         </div>
 </x-app-layout>

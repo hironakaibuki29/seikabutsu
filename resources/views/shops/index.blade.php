@@ -4,7 +4,7 @@
     </x-slot>
         <div>
             <form action="{{ route('index') }}" method="GET">
-                <input type="text" name="keyword" value="{{ keyword }}">
+                <input type="text" name="keyword" value="{{ $keyword }}">
                 <input type="submit" value="検索">
             </form>
         </div>
@@ -21,7 +21,7 @@
                       <button type="button" onclick="deleteShop({{ $shop->id }})">delete</button> 
                     </form>
                     
-                </div>
+                </div><br>
             @endforeach
         </div>
         <div class='paginate'>

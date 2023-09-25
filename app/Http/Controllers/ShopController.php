@@ -1,29 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Http\Requests\ShopRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
-     public function index(ShopRequest $request, Shop $shop)
+     public function index(Request $request, Shop $shop)
     {
       
-        return view('shops.index')->with(['shops' => $shop->getByLimit()]);
+        //return view('shops.index')->with(['shops' => $shop->getByLimit()]);
         
         $keyword = $request->input('keyword');
         
         $query = Shop::query();
         
         if(!empty($keyword)){
-            $query->where('shopname','LIKE',"%{keyword}%")->orwhere('information','LIKE',"%{keyword}");
+            $query->where('shopname','LIKE',"%{$keyword}%")->orwhere('information','LIKE',"%{$keyword}%");
         }
         
-        $Shops = $query->get();
+        $shops = $query->paginate();
         
-        return view('index',compact('shops','keyword'));
+        return view('shops/index',compact('shops','keyword'));
     }
     
     public function show(Shop $shop)

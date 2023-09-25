@@ -27,6 +27,6 @@
             <input type="submit" value="store"/>
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="{{route('index')}}">戻る</a>
         </div>
 </x-app-layout>
