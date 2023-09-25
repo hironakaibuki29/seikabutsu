@@ -1,10 +1,6 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>meshitero</title>
-    </head>
-    <body>
+<x-app-layout>
+    <x-slot name="header">
+    </x-slot>
         <h1>店舗詳細</h1>
         <form action="/shops" method="POST">
             @csrf
@@ -31,7 +27,6 @@
             <input type="submit" value="store"/>
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="{{route('index')}}">戻る</a>
         </div>
-    </body>
-</html>
+</x-app-layout>
